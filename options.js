@@ -108,7 +108,7 @@ document.addEventListener("DOMContentLoaded", () => {
       // After saving, check if both keys now exist → close window after 1 second
       chrome.storage.sync.get(["geminiAPIKey", "openaiAPIKey"], (res) => {
         if (res.geminiAPIKey && res.openaiAPIKey) {
-          setTimeout(() => window.close(), 1000);
+          setTimeout(() => window.close(), 700);
         }
       });
     });
