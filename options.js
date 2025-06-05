@@ -1,3 +1,4 @@
+// options.js
 document.addEventListener("DOMContentLoaded", () => {
   // ============
   // Theme Toggle
@@ -42,38 +43,147 @@ document.addEventListener("DOMContentLoaded", () => {
   // =================
   // API Key Management
   // =================
+  const geminiBlock = document.getElementById("gemini-block");
+  const openaiBlock = document.getElementById("openai-block");
+
   const geminiInput = document.getElementById("gemini-key");
   const openaiInput = document.getElementById("openai-key");
   const saveButton = document.getElementById("save-button");
-  const successMsg = document.getElementById("success-message");
 
-  // Helper: insert a single success <p> under a given input element
-  function showSuccessForInput(inputId, text) {
-    // Create a <p> just above the input, with green text
-    const label = document.querySelector(`label[for="${inputId}"]`);
-    const message = document.createElement("p");
-    message.className = "text-sm text-green-500";
-    message.textContent = text;
-    // Insert message *after* the label (so it appears in place of the input)
-    label.insertAdjacentElement("afterend", message);
-  }
+  const geminiSuccessContainer = document.getElementById("gemini-success-container");
+  const openaiSuccessContainer = document.getElementById("openai-success-container");
 
-  // On load: check storage, hide any input whose key already exists, and show its message
-  chrome.storage.sync.get(["geminiAPIKey", "openaiAPIKey"], ({ geminiAPIKey, openaiAPIKey }) => {
-    if (geminiAPIKey) {
-      // Hide Gemini input & its “Get it from…” paragraph
-      document.querySelector('label[for="gemini-key"]').style.display = "none";
-      geminiInput.style.display = "none";
-      geminiInput.nextElementSibling.style.display = "none"; // the <p> link
-      showSuccessForInput("gemini-key", "✅ Gemini API key already saved!");
-    }
-    if (openaiAPIKey) {
-      document.querySelector('label[for="openai-key"]').style.display = "none";
-      openaiInput.style.display = "none";
-      openaiInput.nextElementSibling.style.display = "none"; // the <p> link
-      showSuccessForInput("openai-key", "✅ OpenAI API key already saved!");
-    }
+  // Helper to create success message + “Change” button for a given provider
+  // function showSavedUI(provider) {
+  //   // provider: string "gemini" or "openai"
+  //   const container =
+  //     provider === "gemini" ? geminiSuccessContainer : openaiSuccessContainer;
+  //   // Clear any existing content
+  //   container.innerHTML = "";
+
+  //   // Create success <p>
+  //   const msg = document.createElement("p");
+  //   msg.className = "text-sm text-green-500";
+  //   msg.textContent =
+  //     provider === "gemini"
+  //       ? "✅ Gemini API key saved successfully!"
+  //       : "✅ OpenAI API key saved successfully!";
+
+  //   // Create “Change” button
+  //   const changeBtn = document.createElement("button");
+  //   changeBtn.className = "text-sm text-blue-600 hover:underline ml-2";
+  //   changeBtn.textContent = "Change";
+  //   changeBtn.addEventListener("click", () => {
+  //     // Remove key from chrome.storage and restore input UI
+  //     const keyName = provider === "gemini" ? "geminiAPIKey" : "openaiAPIKey";
+  //     chrome.storage.sync.remove(keyName, () => {
+  //       // Remove the success message + Change button
+  //       container.innerHTML = "";
+
+  //       // Show label, input, and “Get it from…” link again
+  //       const block = provider === "gemini" ? geminiBlock : openaiBlock;
+  //       const label = block.querySelector(`label[for="${provider}-key"]`);
+  //       const input = provider === "gemini" ? geminiInput : openaiInput;
+  //       const getLink = input.nextElementSibling; // the <p> link just below input
+
+  //       label.style.display = "block";
+  //       input.style.display = "block";
+  //       getLink.style.display = "block";
+  //     });
+  //   });
+
+  //   // Append both to container
+  //   container.appendChild(msg);
+  //   container.appendChild(changeBtn);
+
+  //   // Finally hide the original input + label + getLink
+  //   const block = provider === "gemini" ? geminiBlock : openaiBlock;
+  //   const label = block.querySelector(`label[for="${provider}-key"]`);
+  //   const input = provider === "gemini" ? geminiInput : openaiInput;
+  //   const getLink = input.nextElementSibling;
+
+  //   label.style.display = "none";
+  //   input.style.display = "none";
+  //   getLink.style.display = "none";
+  // }
+  // Helper to create success message + “Change” button for a given provider
+function showSavedUI(provider) {
+  const container =
+    provider === "gemini" ? geminiSuccessContainer : openaiSuccessContainer;
+
+  // Clear any existing content
+  container.innerHTML = "";
+
+  // Create a wrapper div with flex layout
+  const wrapper = document.createElement("div");
+  wrapper.className = "flex items-center justify-between bg-green-50 dark:bg-green-900 rounded-md p-2";
+
+  // Create success <p>
+  const msg = document.createElement("p");
+  msg.className = "text-sm text-green-700 dark:text-green-300 flex-1";
+  msg.textContent =
+    provider === "gemini"
+      ? "✅ Gemini API key saved successfully!"
+      : "✅ OpenAI API key saved successfully!";
+
+  // Create “Change” button
+  // const changeBtn = document.createElement("button");
+  // changeBtn.className =
+  // "ml-4 text-sm font-medium text-blue-600 dark:text-blue-400 hover:text-blue-800 dark:hover:text-blue-200 bg-green-50 dark:bg-green-900 border-none focus:outline-none appearance-none p-0 m-0";
+  const changeBtn = document.createElement("span");
+  changeBtn.setAttribute("role", "button");
+  changeBtn.className = `ml-4 cursor-pointer text-sm font-medium text-blue-600 dark:text-blue-400 hover:text-blue-800 dark:hover:text-blue-200`;
+  changeBtn.textContent = "Change";
+  changeBtn.addEventListener("click", () => {
+    // Remove key from chrome.storage and restore input UI
+    const keyName = provider === "gemini" ? "geminiAPIKey" : "openaiAPIKey";
+    chrome.storage.sync.remove(keyName, () => {
+      // Remove the success message (wrapper)
+      container.innerHTML = "";
+
+      // Show label, input, and “Get it from…” link again
+      const block = provider === "gemini" ? geminiBlock : openaiBlock;
+      const label = block.querySelector(`label[for="${provider}-key"]`);
+      const input = provider === "gemini" ? geminiInput : openaiInput;
+      const getLink = input.nextElementSibling; // the <p> link just below input
+
+      label.style.display = "block";
+      input.style.display = "block";
+      getLink.style.display = "block";
+    });
   });
+
+  // Assemble wrapper
+  wrapper.appendChild(msg);
+  wrapper.appendChild(changeBtn);
+
+  // Append wrapper to the container div
+  container.appendChild(wrapper);
+
+  // Finally hide the original input + label + getLink
+  const block = provider === "gemini" ? geminiBlock : openaiBlock;
+  const label = block.querySelector(`label[for="${provider}-key"]`);
+  const input = provider === "gemini" ? geminiInput : openaiInput;
+  const getLink = input.nextElementSibling;
+
+  label.style.display = "none";
+  input.style.display = "none";
+  getLink.style.display = "none";
+}
+
+
+  // On load: see if either key is already saved
+  chrome.storage.sync.get(
+    ["geminiAPIKey", "openaiAPIKey"],
+    ({ geminiAPIKey, openaiAPIKey }) => {
+      if (geminiAPIKey) {
+        showSavedUI("gemini");
+      }
+      if (openaiAPIKey) {
+        showSavedUI("openai");
+      }
+    }
+  );
 
   saveButton.addEventListener("click", () => {
     const geminiKey = geminiInput.value.trim();
@@ -84,36 +194,150 @@ document.addEventListener("DOMContentLoaded", () => {
       return;
     }
 
-    // Build the storage object
-    let keysToSet = {};
-    if (geminiKey) keysToSet.geminiAPIKey = geminiKey;
-    if (openaiKey) keysToSet.openaiAPIKey = openaiKey;
+    // Build object to store whichever keys were provided
+    const toSet = {};
+    if (geminiKey) toSet.geminiAPIKey = geminiKey;
+    if (openaiKey) toSet.openaiAPIKey = openaiKey;
 
-    chrome.storage.sync.set(keysToSet, () => {
-      // Append a message only for the input that was visible (not previously saved)
+    chrome.storage.sync.set(toSet, () => {
+      // Show saved UI only for whichever input was visible
       if (geminiKey && geminiInput.style.display !== "none") {
-        // Hide the input & show “saved” message
-        document.querySelector('label[for="gemini-key"]').style.display = "none";
-        geminiInput.style.display = "none";
-        geminiInput.nextElementSibling.style.display = "none";
-        showSuccessForInput("gemini-key", "✅ Gemini API key saved successfully!");
+        showSavedUI("gemini");
       }
       if (openaiKey && openaiInput.style.display !== "none") {
-        document.querySelector('label[for="openai-key"]').style.display = "none";
-        openaiInput.style.display = "none";
-        openaiInput.nextElementSibling.style.display = "none";
-        showSuccessForInput("openai-key", "✅ OpenAI API key saved successfully!");
+        showSavedUI("openai");
       }
 
-      // After saving, check if both keys now exist → close window after 1 second
-      chrome.storage.sync.get(["geminiAPIKey", "openaiAPIKey"], (res) => {
-        if (res.geminiAPIKey && res.openaiAPIKey) {
-          setTimeout(() => window.close(), 700);
+      // If both keys now exist, close after 0.7s
+      chrome.storage.sync.get(
+        ["geminiAPIKey", "openaiAPIKey"],
+        (res) => {
+          if (res.geminiAPIKey && res.openaiAPIKey) {
+            setTimeout(() => window.close(), 700);
+          }
         }
-      });
+      );
     });
   });
 });
+
+
+// document.addEventListener("DOMContentLoaded", () => {
+//   // ============
+//   // Theme Toggle
+//   // ============
+//   const html = document.documentElement;
+//   const toggleBtn = document.getElementById("toggle-mode");
+//   const themeText = document.getElementById("theme-text");
+//   const themeIcon = document.getElementById("theme-icon");
+
+//   if (!localStorage.getItem("theme")) {
+//     localStorage.setItem("theme", "dark");
+//     html.classList.add("dark");
+//   }
+//   const savedTheme = localStorage.getItem("theme");
+//   html.classList.toggle("dark", savedTheme === "dark");
+
+//   function updateThemeButton() {
+//     if (html.classList.contains("dark")) {
+//       themeText.textContent = "Light";
+//       themeIcon.src = "brightness.png";
+//       themeIcon.alt = "Switch to Light Mode";
+//       toggleBtn.classList.remove("light-mode");
+//       toggleBtn.classList.add("dark-mode");
+//     } else {
+//       themeText.textContent = "Dark";
+//       themeIcon.src = "sun.png";
+//       themeIcon.alt = "Switch to Dark Mode";
+//       toggleBtn.classList.remove("dark-mode");
+//       toggleBtn.classList.add("light-mode");
+//     }
+//   }
+
+//   updateThemeButton();
+
+//   toggleBtn.addEventListener("click", () => {
+//     html.classList.toggle("dark");
+//     const isDark = html.classList.contains("dark");
+//     localStorage.setItem("theme", isDark ? "dark" : "light");
+//     updateThemeButton();
+//   });
+
+//   // =================
+//   // API Key Management
+//   // =================
+//   const geminiInput = document.getElementById("gemini-key");
+//   const openaiInput = document.getElementById("openai-key");
+//   const saveButton = document.getElementById("save-button");
+//   const successMsg = document.getElementById("success-message");
+
+//   // Helper: insert a single success <p> under a given input element
+//   function showSuccessForInput(inputId, text) {
+//     // Create a <p> just above the input, with green text
+//     const label = document.querySelector(`label[for="${inputId}"]`);
+//     const message = document.createElement("p");
+//     message.className = "text-sm text-green-500";
+//     message.textContent = text;
+//     // Insert message *after* the label (so it appears in place of the input)
+//     label.insertAdjacentElement("afterend", message);
+//   }
+
+//   // On load: check storage, hide any input whose key already exists, and show its message
+//   chrome.storage.sync.get(["geminiAPIKey", "openaiAPIKey"], ({ geminiAPIKey, openaiAPIKey }) => {
+//     if (geminiAPIKey) {
+//       // Hide Gemini input & its “Get it from…” paragraph
+//       document.querySelector('label[for="gemini-key"]').style.display = "none";
+//       geminiInput.style.display = "none";
+//       geminiInput.nextElementSibling.style.display = "none"; // the <p> link
+//       showSuccessForInput("gemini-key", "✅ Gemini API key already saved!");
+//     }
+//     if (openaiAPIKey) {
+//       document.querySelector('label[for="openai-key"]').style.display = "none";
+//       openaiInput.style.display = "none";
+//       openaiInput.nextElementSibling.style.display = "none"; // the <p> link
+//       showSuccessForInput("openai-key", "✅ OpenAI API key already saved!");
+//     }
+//   });
+
+//   saveButton.addEventListener("click", () => {
+//     const geminiKey = geminiInput.value.trim();
+//     const openaiKey = openaiInput.value.trim();
+
+//     if (!geminiKey && !openaiKey) {
+//       alert("Please enter at least one API key.");
+//       return;
+//     }
+
+//     // Build the storage object
+//     let keysToSet = {};
+//     if (geminiKey) keysToSet.geminiAPIKey = geminiKey;
+//     if (openaiKey) keysToSet.openaiAPIKey = openaiKey;
+
+//     chrome.storage.sync.set(keysToSet, () => {
+//       // Append a message only for the input that was visible (not previously saved)
+//       if (geminiKey && geminiInput.style.display !== "none") {
+//         // Hide the input & show “saved” message
+//         document.querySelector('label[for="gemini-key"]').style.display = "none";
+//         geminiInput.style.display = "none";
+//         geminiInput.nextElementSibling.style.display = "none";
+//         showSuccessForInput("gemini-key", "✅ Gemini API key saved successfully!");
+//       }
+//       if (openaiKey && openaiInput.style.display !== "none") {
+//         document.querySelector('label[for="openai-key"]').style.display = "none";
+//         openaiInput.style.display = "none";
+//         openaiInput.nextElementSibling.style.display = "none";
+//         showSuccessForInput("openai-key", "✅ OpenAI API key saved successfully!");
+//       }
+
+//       // After saving, check if both keys now exist → close window after 1 second
+//       chrome.storage.sync.get(["geminiAPIKey", "openaiAPIKey"], (res) => {
+//         if (res.geminiAPIKey && res.openaiAPIKey) {
+//           setTimeout(() => window.close(), 700);
+//         }
+//       });
+//     });
+//   });
+// });
 
 
 
