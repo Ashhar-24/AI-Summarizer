@@ -1,0 +1,48 @@
+html.dark {
+  background-color: #1a202c;
+  color: #cbd5e0;
+}
+
+html.dark body {
+  background-color: #1a202c;
+  color: #cbd5e0;
+}
+
+html.dark select,
+html.dark button,
+html.dark pre {
+  background-color: #2d3748;
+  color: #cbd5e0;
+  border-color: #4a5568;
+}
+
+.light-mode {
+  background-color: white;
+  border-color: #d1d5db;
+  color: #4b5563;
+}
+
+.light-mode:hover {
+  background-color: #1f2937;
+  color: white;
+}
+
+.dark-mode {
+  background-color: #374151;
+  border-color: #4b5563;
+  color: #d1d5db;
+}
+
+.dark-mode:hover {
+  background-color: white;
+  color: #1f2937;
+}
+
+.dark #save-button {
+  background-color: #22c55e;
+  color: white;
+}
+
+.dark #save-button:hover {
+  background-color: #16a34a;
+}
