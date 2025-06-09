@@ -6,10 +6,11 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>AI Summary Settings</title>
   <link href="https://unpkg.com/tailwindcss@2.2.19/dist/tailwind.min.css" rel="stylesheet" />
+  <link rel="stylesheet" href="options.css">
 </head>
 
 <body
-  class="bg-gray-100 dark:bg-gray-900 text-gray-800 dark:text-gray-100 min-h-screen px-4 py-6 transition duration-300">
+  class="bg-gray-200 dark:bg-gray-900 text-gray-800 dark:text-gray-100 min-h-screen px-4 py-6 transition duration-300">
 
   <div class="max-w-xl mx-auto space-y-6">
     <!-- Header and Theme Toggle -->
@@ -21,28 +22,6 @@
         <span id="theme-text">Dark</span>
       </button>
     </div>
-
-    <!-- Gemini API Key Input
-    <div class="space-y-2">
-      <label for="gemini-key" class="block font-medium text-sm">Gemini API Key</label>
-      <input type="text" id="gemini-key" placeholder="Enter your Gemini API key"
-        class="w-full px-3 py-2 border rounded-md border-gray-300 dark:border-gray-600 bg-white dark:bg-gray-800 text-gray-900 dark:text-gray-100 placeholder-gray-400 dark:placeholder-gray-500 focus:outline-none focus:ring-2 focus:ring-blue-400 dark:focus:ring-blue-500 transition" />
-      <p class="text-sm">
-        Get it from <a href="https://makersuite.google.com/app/apikey" target="_blank"
-          class="text-blue-600 dark:text-blue-400 hover:underline">Gemini AI Studio</a>.
-      </p>
-    </div> -->
-
-    <!-- OpenAI API Key Input -->
-    <!-- <div class="space-y-2">
-      <label for="openai-key" class="block font-medium text-sm mt-4">OpenAI API Key</label>
-      <input type="text" id="openai-key" placeholder="Enter your OpenAI API key"
-        class="w-full px-3 py-2 border rounded-md border-gray-300 dark:border-gray-600 bg-white dark:bg-gray-800 text-gray-900 dark:text-gray-100 placeholder-gray-400 dark:placeholder-gray-500 focus:outline-none focus:ring-2 focus:ring-blue-400 dark:focus:ring-blue-500 transition" />
-      <p class="text-sm">
-        Get it from <a href="https://platform.openai.com/account/api-keys" target="_blank"
-          class="text-blue-600 dark:text-blue-400 hover:underline">OpenAI Dashboard</a>.
-      </p>
-    </div>  -->
 
         <!-- Gemini API Key Input -->
     <div id="gemini-block" class="space-y-2">
@@ -66,7 +45,7 @@
     </div>
 
     <!-- OpenAI API Key Input -->
-    <div id="openai-block" class="space-y-2">
+    <!-- <div id="openai-block" class="space-y-2">
       <label for="openai-key" class="block font-medium text-sm mt-4">OpenAI API Key</label>
       <input
         type="text"
@@ -83,9 +62,24 @@
         >OpenAI Dashboard</a>.
       </p>
       <!-- Placeholder for success + Change button -->
-      <div id="openai-success-container"></div>
-    </div>
+      <!-- <div id="openai-success-container"></div>
+    </div> -->
 
+    <!-- Hugging Face API Key Input -->
+    <div id="huggingface-block" class="space-y-2">
+      <label for="huggingface-key" class="block font-medium text-sm mt-4">Hugging Face API Key</label>
+      <input
+        type="text"
+        id="huggingface-key"
+        placeholder="Enter your Hugging Face API key"
+        class="w-full px-3 py-2 border rounded-md border-gray-300 dark:border-gray-600 bg-white dark:bg-gray-800 text-gray-900 dark:text-gray-100 placeholder-gray-400 dark:placeholder-gray-500 focus:outline-none focus:ring-2 focus:ring-blue-400 dark:focus:ring-blue-500 transition"
+      />
+      <p class="text-sm">
+        Get it from
+        <a href="https://huggingface.co/settings/tokens" target="_blank" class="text-blue-600 dark:text-blue-400 hover:underline">Hugging Face Tokens</a>.
+      </p>
+      <div id="huggingface-success-container"></div>
+    </div>
 
 
     <!-- Save Button -->
@@ -100,57 +94,6 @@
   </div>
 
   <script src="options.js"></script>
-
-  <style>
-    html.dark {
-      background-color: #1a202c;
-      color: #cbd5e0;
-    }
-
-    html.dark body {
-      background-color: #1a202c;
-      color: #cbd5e0;
-    }
-
-    html.dark select,
-    html.dark button,
-    html.dark pre {
-      background-color: #2d3748;
-      color: #cbd5e0;
-      border-color: #4a5568;
-    }
-
-    .light-mode {
-      background-color: white;
-      border-color: #d1d5db;
-      color: #4b5563;
-    }
-
-    .light-mode:hover {
-      background-color: #1f2937;
-      color: white;
-    }
-
-    .dark-mode {
-      background-color: #374151;
-      border-color: #4b5563;
-      color: #d1d5db;
-    }
-
-    .dark-mode:hover {
-      background-color: white;
-      color: #1f2937;
-    }
-
-    .dark #save-button {
-      background-color: #22c55e;
-      color: white;
-    }
-
-    .dark #save-button:hover {
-      background-color: #16a34a;
-    }
-  </style>
 </body>
 
 </html>
