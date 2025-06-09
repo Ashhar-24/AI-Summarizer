@@ -27,13 +27,13 @@ document.addEventListener("DOMContentLoaded", () => {
   function updateThemeButton() {
     if (html.classList.contains("dark")) {
       themeText.textContent = "Light";
-      themeIcon.src = "brightness.png";
+      themeIcon.src = "/assets/images/brightness.png";
       themeIcon.alt = "Switch to Light Mode";
       toggleBtn.classList.remove("light-mode");
       toggleBtn.classList.add("dark-mode");
     } else {
       themeText.textContent = "Dark";
-      themeIcon.src = "sun.png";
+      themeIcon.src = "/assets/images/sun.png";
       themeIcon.alt = "Switch to Dark Mode";
       toggleBtn.classList.remove("dark-mode");
       toggleBtn.classList.add("light-mode");

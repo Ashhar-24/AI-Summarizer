@@ -109,11 +109,8 @@ All summarization is done securely via HTTPS APIs, and no content is stored or t
 
 
 ## 💡 Screenshots
-
-Light Mode
-
-Dark Mode
-
+![alt text](./assets/images/image.png)
+![alt text](./assets/images/image-1.png)
 
 
 

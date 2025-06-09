@@ -8,24 +8,24 @@
     "scripting", "activeTab", "storage"
   ],
   "action":{
-    "default_popup": "popup.html",
-    "default_icon": "icon1.png"
+    "default_popup": "/src/popup.html",
+    "default_icon": "/assets/logo.png"
   },
   "content_scripts": [
     {
       "matches": ["<all_urls>"],
       "js": [
-        "libs/Readability.js",
-        "content.js"
+        "/src/libs/Readability.js",
+        "/src/content.js"
       ]
     }
   ],
 
   "background": {
-    "service_worker": "background.js"
+    "service_worker": "/src/background.js"
   },
 
-  "options_page": "options.html",
+  "options_page": "/src/options.html",
 
   "host_permissions": ["<all_urls>"],
 
