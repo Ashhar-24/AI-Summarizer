@@ -35,9 +35,7 @@ This Chrome extension works seamlessly on the following Chromium-based browsers:
 
 ℹ️ The extension is built using `manifest_version: 3`, ensuring compatibility with modern versions of these browsers. Other Chromium-based browsers may also be supported.
 
-## 🚀 How to Use
-
-## 📽️ Walkthrough Demo
+## 🚀 How to Use (A Walkthrough Demo)
 
 Click below to watch a quick walkthrough of the Chrome extension:
 
