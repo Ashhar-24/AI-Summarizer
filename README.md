@@ -37,6 +37,13 @@ This Chrome extension works seamlessly on the following Chromium-based browsers:
 
 ## 🚀 How to Use
 
+## 📽️ Walkthrough Demo
+
+Click below to watch a quick walkthrough of the Chrome extension:
+
+[![Watch the video](./assets/images/thumbnail.png)](https://youtu.be/dJZvF67DHY0)
+
+
 ### 1. Clone or Download the Extension
 
 Click the green Code button above → Download ZIP → extract the ZIP on your machine.
