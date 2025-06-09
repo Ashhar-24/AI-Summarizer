@@ -47,19 +47,19 @@ Alternatively:
 
 5. Select the folder where this extension was extracted or cloned
 
-6. Done! ✅ The extension icon will appear in the toolbar
+6. Done! ✅ The extension icon will appear in the toolbar (pin it!)
 
 ### 3. Setup API Keys
 
-1. Click the extension icon → go to Settings
+1. By default, the options page will be loaded (or) click the extension icon → go to Settings (⚙️)
 
 2. Enter your free API keys:
 
-3. Gemini API Key:  [Get it here](https://aistudio.google.com/app/apikey)
+    - Gemini API Key:  [Get it here](https://aistudio.google.com/app/apikey)
 
-4. Hugging Face API Key: [Get it here](https://huggingface.co/settings/token)
+    - Hugging Face API Key: [Get it here](https://huggingface.co/settings/token)
 
-5. Save the keys
+3. Save the keys
 
 ### 4. Start Summarizing
 
