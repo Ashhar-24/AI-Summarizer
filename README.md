@@ -33,7 +33,7 @@ Click the green Code button above → Download ZIP → extract the ZIP on your m
 
 Alternatively:
 
-`   git clone https://github.com/your-username/ai-summarizer-extension.git  `
+`   git clone https://github.com/Ashhar-24/AI-Summarizer.git  `
 
 ### 2. Load the Extension into Chrome
 
@@ -118,7 +118,7 @@ All summarization is done securely via HTTPS APIs, and no content is stored or t
 
 ## 📢 Note
 
-This extension is not published on the Chrome Web Store yet (to avoid the $5 registration fee). You can still use it easily by following the steps above.
+This extension is not published on the Chrome Web Store yet. You can still use it easily by following the steps above.
 
 ## 🤝 Contributing
 
