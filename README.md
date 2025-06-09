@@ -72,7 +72,8 @@ Alternatively:
 
 2. Enter your free API keys:
 
-    - Gemini API Key:  [Get it here](https://aistudio.google.com/app/apikey)
+    - Gemini API Key:  <a href="https://aistudio.google.com/app/apikey" target="_blank" rel="noopener noreferrer">Get it here</a>
+
 
     - Hugging Face API Key: [Get it here](https://huggingface.co/settings/token)
 
