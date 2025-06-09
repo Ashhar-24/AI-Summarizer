@@ -24,6 +24,16 @@ Built using Gemini and Hugging Face AI models — no need for costly APIs. Just 
 
 - 🔄 Easy editing of saved API keys
 
+## 🧭 Browser Compatibility
+This Chrome extension works seamlessly on the following Chromium-based browsers:
+
+- ✅ Google Chrome
+
+- ✅ Brave Browser
+
+- ✅ Microsoft Edge
+
+    `ℹ️ The extension is built using manifest_version: 3, ensuring compatibility with modern versions of these browsers. Other Chromium-based browsers may also be supported.`
 
 ## 🚀 How to Use
 
