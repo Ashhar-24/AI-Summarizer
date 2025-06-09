@@ -33,7 +33,7 @@ This Chrome extension works seamlessly on the following Chromium-based browsers:
 
 - ✅ Microsoft Edge
 
-    `ℹ️ The extension is built using manifest_version: 3, ensuring compatibility with modern versions of these browsers. Other Chromium-based browsers may also be supported.`
+ℹ️ The extension is built using `manifest_version: 3`, ensuring compatibility with modern versions of these browsers. Other Chromium-based browsers may also be supported.
 
 ## 🚀 How to Use
 
