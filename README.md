@@ -123,13 +123,3 @@ This extension is not published on the Chrome Web Store yet. You can still use i
 ## 🤝 Contributing
 
 Pull requests and suggestions are welcome! Feel free to fork the repo and make your improvements.
-
-## 📄 License
-
-MIT License — use it freely and modify it to suit your needs.
-
-🔗 Links
-
-🤖 Hugging Face: https://huggingface.co/models
-
-🌐 Gemini Studio: https://makersuite.google.com/
