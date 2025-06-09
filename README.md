@@ -33,7 +33,7 @@ Click the green Code button above → Download ZIP → extract the ZIP on your m
 
 Alternatively:
 
-    `git clone https://github.com/Ashhar-24/AI-Summarizer.git`
+    git clone https://github.com/Ashhar-24/AI-Summarizer.git
 
 ### 2. Load the Extension into Chrome
 
