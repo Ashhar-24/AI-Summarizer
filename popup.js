@@ -1,5 +1,3 @@
-// -------------------------------- new code --------------------------------
-
 document.addEventListener("DOMContentLoaded", () => {
   // -------- Elements --------
   const html = document.documentElement;
@@ -182,7 +180,7 @@ document.addEventListener("DOMContentLoaded", () => {
       result.textContent = "Cannot summarize with Hugging Face: no Hugging Face API key available.";
       return;
     }
-
+    
     result.textContent = "🔧 Generating summary…";
     copyBtn.disabled = true;
     copyBtn.classList.add("opacity-50", "cursor-not-allowed");
@@ -394,5 +392,3 @@ async function getHuggingFaceSummary(rawText, type, apiKey) {
 
   return summary;
 }
-
-
