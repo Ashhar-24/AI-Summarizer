@@ -41,7 +41,13 @@ This Chrome extension works seamlessly on the following Chromium-based browsers:
 
 Click below to watch a quick walkthrough of the Chrome extension:
 
-[![Watch the video](./assets/images/thumbnail.png)](https://youtu.be/dJZvF67DHY0)
+<!-- [![Watch the video](./assets/images/thumbnail.png)](https://youtu.be/dJZvF67DHY0) -->
+<p align="center">
+  <a href="https://youtu.be/dJZvF67DHY0">
+    <img src="./assets/images/thumbnail.png" alt="Watch the video" width="500"/>
+  </a>
+</p>
+
 
 
 ### 1. Clone or Download the Extension
@@ -72,8 +78,7 @@ Alternatively:
 
 2. Enter your free API keys:
 
-    - Gemini API Key:  <a href="https://aistudio.google.com/app/apikey" target="_blank" rel="noopener noreferrer">Get it here</a>
-
+    - Gemini API Key:  [Get it here](https://aistudio.google.com/app/apikey)
 
     - Hugging Face API Key: [Get it here](https://huggingface.co/settings/token)
 
